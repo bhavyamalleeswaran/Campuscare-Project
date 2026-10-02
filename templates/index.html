@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f6f7fb">
+  <title>CampusCare — Your voice matters</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  {% load static %}<link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar"><a class="brand" href="#"><span class="brand-mark">C</span> campus<span>care</span></a><div class="nav-caption">WORKSPACE</div>
+    <nav><button class="nav-link active" data-view="overview"><span>◫</span> Overview</button><button class="nav-link" data-view="complaints"><span>▤</span> Complaints <b id="nav-count">0</b></button><button class="nav-link" data-view="departments"><span>▦</span> Departments</button></nav>
+    <div class="side-bottom"><div class="support-card"><div class="support-mark">?</div><strong>Need a hand?</strong><p>Reach out to your campus support team.</p><a href="mailto:support@campus.edu">Contact support ↗</a></div><div class="user-card"><div class="avatar">CC</div><div><strong>Campus community</strong><small>Student portal</small></div></div></div>
+  </aside>
+  <main class="main"><header class="topbar"><button class="menu" id="menu" aria-label="Open menu">☰</button><div class="crumb">Workspace <span>/</span> <b id="crumb">Overview</b></div><div class="top-right"><span class="online"><i></i> Service online</span><span class="avatar mini">CC</span></div></header>
+    <div class="content"><section class="page-head"><div><div class="eyebrow" id="date-label">CAMPUS SUPPORT</div><h1 id="page-title">Good morning <em>✦</em></h1><p>A better campus starts with being heard.</p></div><button class="button primary" id="new-complaint">＋ New complaint</button></section>
+      <section class="hero"><div class="hero-copy"><div class="hero-tag">✳ &nbsp;YOUR VOICE MATTERS</div><h2>Let’s make campus<br>better, together.</h2><p>Share an issue, track its progress, and help us improve your campus experience.</p><button class="button white" id="hero-new">Raise a complaint <span>→</span></button></div><div class="hero-art"><div class="ring r1"></div><div class="ring r2"></div><div class="floating back">✓ &nbsp;Resolved</div><div class="floating front"><i>✦</i><b>Your feedback</b><small>makes a difference</small><div class="progress"><span></span></div></div><div class="star">✳</div></div></section>
+      <section class="stats"><article><div>Total complaints <i class="ico purple">▤</i></div><strong id="stat-total">—</strong><small>All submitted concerns</small></article><article><div>In progress <i class="ico orange">◷</i></div><strong id="stat-progress">—</strong><small>Being reviewed by staff</small></article><article><div>Resolved <i class="ico green">✓</i></div><strong id="stat-resolved">—</strong><small>Issues successfully closed</small></article><article><div>Departments <i class="ico blue">▦</i></div><strong id="stat-departments">—</strong><small>Ready to help you</small></article></section>
+      <section class="panel complaints-panel"><div class="panel-head"><div><h2 id="list-title">Recent complaints</h2><p>Keep an eye on the latest campus updates.</p></div><div class="tools"><label class="search">⌕ <input id="search" type="search" placeholder="Search complaints…"></label><select id="status-filter"><option value="">All statuses</option><option value="submitted">Submitted</option><option value="assigned">Assigned</option><option value="in_progress">In Progress</option><option value="resolved">Resolved</option><option value="rejected">Rejected</option></select></div></div>
+        <div class="table-scroll"><table><thead><tr><th>COMPLAINT</th><th>DEPARTMENT</th><th>SUBMITTED</th><th>STATUS</th><th></th></tr></thead><tbody id="complaint-rows"><tr><td colspan="5" class="empty">Loading complaints…</td></tr></tbody></table></div><div class="table-foot"><span id="result-count"></span><button class="link" data-view="complaints">View all complaints →</button></div></section>
+      <section class="panel departments-panel"><div class="panel-head"><div><h2>Departments ready to help</h2><p>Find the right team for your concern.</p></div><button class="link" data-view="departments">All departments →</button></div><div id="department-grid" class="dept-grid"><div class="empty">Loading departments…</div></div></section><footer>CampusCare <span>·</span> Built for a better campus experience</footer>
+    </div>
+  </main>
+  <dialog id="complaint-dialog"><form id="complaint-form"><div class="dialog-head"><div><div class="eyebrow">CAMPUS SUPPORT</div><h2>Tell us what’s happening</h2><p>We’ll get your concern to the right team.</p></div><button type="button" class="close" data-close="complaint-dialog">×</button></div>
+    <label>Student ID<input name="student_code" required placeholder="e.g. STU2024012"></label><label>Department<select name="department" id="department-select" required><option value="">Select a department</option></select></label><label>Complaint title<input name="title" required maxlength="140" placeholder="Summarize the issue"></label><label>Tell us more<textarea name="description" rows="4" required placeholder="Share details that can help us resolve this…"></textarea></label><div id="form-error" class="error"></div><div class="dialog-actions"><button type="button" class="button quiet" data-close="complaint-dialog">Cancel</button><button class="button primary" id="submit-complaint">Submit complaint →</button></div>
+  </form></dialog>
+  <dialog id="detail-dialog"><div id="detail-content"></div></dialog><div id="toast" class="toast" role="status"></div>
+  <script src="{% static 'js/app.js' %}"></script>
+</body></html>
